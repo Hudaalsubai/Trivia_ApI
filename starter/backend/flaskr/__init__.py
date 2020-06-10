@@ -283,7 +283,7 @@ def create_app(test_config=None):
 # #   # Create error handlers for all expected errors 
 # # #   # including 404 and 422. 
   @app.errorhandler(404)
-  def not_found(error):
+  def resource_not_found(error):
         return jsonify({
            'success': False,
            'error': 404,
@@ -307,7 +307,7 @@ def create_app(test_config=None):
       }),400
 
   @app.errorhandler(405)
-  def not_found(error):
+  def method_not_allowed(error):
       return jsonify({
          'success': False,
          'error': 405,
