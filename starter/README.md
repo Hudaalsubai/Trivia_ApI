@@ -209,7 +209,7 @@ GET '/questions?page=<page_number>'
     }
   ],
   "success": true,
-  "total_questions": 19
+  "total_questions": 22
 }
 ```
 DELETE /questions/<question_id> 
@@ -218,12 +218,11 @@ DELETE /questions/<question_id>
    -Deletes the book of the given ID if it exists. 
    -Request arguments:(REQUIRED) question_id:int
    -Returns the id of the deleted book, success value.
- 2)sample Request curl -X DELETE http://127.0.0.1:5000/questions/16
+ 2)sample Request curl -X DELETE http://127.0.0.1:5000/questions/30
  3)Detailed response:
 ```
-
 {
-  "deleted": "16", 
+  "deleted": 33,
   "success": true
 }
 ```
@@ -232,25 +231,17 @@ POST /questions
  1) General:
    -Creates a new questions using the questions,answer,category,difficulty
    -Request Arguments: None
-   -Returns the id of the created question, success value, total questions, and questions list based on current page number to update                      the frontend.
+   -Returns the id of the created question, success value.
 2)sample Request:
 curl -i -H "Content-Type: application/json" -X POST -d "{\"question\":\"what is the capital city of saudi arabia? \", \"answer\":\"Riyadh\", \"category\":\"3\", \"difficulty\":\"3\"}" 127.0.0.1:5000/questions
 3)Detailed response:
 ```
 {
-  "questions": [
-    {
-      "question": "what is the capital city of saudi arabia?",
-      "id": 29,
-      "answer":"Riyadh",
-      "category": 3,
-      "difficulty":3
-    }
-  ],
-  "created": 29,
-  "success": true,
-  "total_questions": 20
+  "created": 45,
+  "success": true
 }
+
+
 ```
 POST /questions/search 
 
@@ -324,23 +315,22 @@ POST /quizzes
     -Returns  current_category ,dictionary of quetions ,success value, total questions for for the specified category.
 
 2)Sample Request:
-curl -i -H "Content-Type: application/json" -X POST -d "{\"previous_questions\":[1,3],\"quiz_category\":{\"id\":\"3\",\"type\":\"Geography\"}}" 
+curl -i -H "Content-Type: application/json" -X POST -d "{\"previous_questions\":[1,3],\"quiz_category\":{\"id\":\"3\",\"type\":\"Geography\"}}"  http://127.0.0.1:5000/quizzes
 
 3)Detailed response:
 ```
+
 {
   "question": {
-    "answer": "Lake Victoria",
+    "answer": "The Palace of Versailles",
     "category": 3,
-    "difficulty": 2,
-    "id": 13,
-    "question": "What is the largest lake in Africa?"
+    "difficulty": 3,
+    "id": 14,
+    "question": "In which royal palace would you find the Hall of Mirrors?"
   },
   "success": true
 }
 ```
-
-
 
 
 
